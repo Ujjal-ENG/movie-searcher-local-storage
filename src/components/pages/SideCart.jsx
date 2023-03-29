@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Toasts from "./Toast";
 
 const SideCart = (props) => {
   const [time, setTime] = useState("");
   const [breakTime, setBreakTime] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
   useEffect(() => {
     const getWatchTime = localStorage.getItem("watchTime");
     setTime(getWatchTime);
@@ -36,11 +38,17 @@ const SideCart = (props) => {
       </button>
       <input
         type="text"
-        disabled={breakTime ? breakTime : true}
+        disabled
         value={breakTime}
         onChange={(e) => setBreakTime(e.target.value)}
       />
-      <button className="mt-5 btn btn-info w-100">Complete</button>
+      {isCompleted && <Toasts data={breakTime} />}
+      <button
+        className="mt-5 btn btn-info w-100"
+        onClick={() => setIsCompleted(!isCompleted)}
+      >
+        Complete
+      </button>
     </div>
   );
 };
