@@ -9,7 +9,15 @@ function App() {
   const [cartData, setCartData] = useState();
 
   const findTheData = (data) => {
-    console.log(data);
+    const previousWatchTime = JSON.parse(localStorage.getItem("watchTime"));
+    if (previousWatchTime) {
+      const newTime = previousWatchTime + data;
+      localStorage.setItem("watchTime", newTime);
+    } else {
+      localStorage.setItem("watchTime", data);
+    }
+
+    setCartData(data);
   };
   return (
     <>
@@ -20,7 +28,7 @@ function App() {
         </div>
 
         <div className="side-cart col-md-4 card">
-          <SideCart />
+          <SideCart data={cartData} />
         </div>
       </div>
       <ContactUs />

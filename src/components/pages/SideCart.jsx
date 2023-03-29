@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
-const SideCart = () => {
+const SideCart = (props) => {
+  console.log(props.data);
   return <div>SideCart</div>;
 };
 

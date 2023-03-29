@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 const SIngleCard = (props) => {
+  const [clicked, setClicked] = useState(false);
   const { description, imdbRating, movieName, poster, watchTime } = props.data;
 
   const setFindTheData = (data) => {
     props.findTheData(data);
+    setClicked(!clicked);
   };
 
   return (
@@ -24,6 +26,7 @@ const SIngleCard = (props) => {
       </Card>
       <Button
         variant="info my-2 w-25"
+        disabled={clicked ? true : false}
         onClick={() => setFindTheData(watchTime)}
       >
         Book Now
