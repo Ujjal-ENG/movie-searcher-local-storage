@@ -4,7 +4,7 @@ import ContactUs from "./components/pages/ContactUs";
 import Home from "./components/pages/Home";
 import SideCart from "./components/pages/SideCart";
 import Navbars from "./layouts/Navbar";
-
+import { ToastContainer } from "react-toastify";
 function App() {
   const [cartData, setCartData] = useState();
 
@@ -33,6 +33,7 @@ function App() {
         </div>
       </div>
       <ContactUs />
+      <ToastContainer />
     </>
   );
 }

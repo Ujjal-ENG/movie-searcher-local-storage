@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Toasts from "./Toast";
-
+import { toast } from "react-toastify";
 const SideCart = (props) => {
   const [time, setTime] = useState("");
   const [breakTime, setBreakTime] = useState(0);
-  const [isCompleted, setIsCompleted] = useState(false);
+
   useEffect(() => {
     const getWatchTime = localStorage.getItem("watchTime");
     setTime(getWatchTime);
@@ -14,6 +14,11 @@ const SideCart = (props) => {
     setBreakTime(value);
   };
 
+  const notify = () => {
+    const newTime = time - breakTime;
+    setTime(newTime);
+    toast(`${newTime} breaks`);
+  };
   return (
     <div>
       <h1>Total WatchTime is: {time}</h1>
@@ -42,11 +47,8 @@ const SideCart = (props) => {
         value={breakTime}
         onChange={(e) => setBreakTime(e.target.value)}
       />
-      {isCompleted && <Toasts data={breakTime} />}
-      <button
-        className="mt-5 btn btn-info w-100"
-        onClick={() => setIsCompleted(!isCompleted)}
-      >
+
+      <button className="mt-5 btn btn-info w-100" onClick={notify}>
         Complete
       </button>
     </div>
