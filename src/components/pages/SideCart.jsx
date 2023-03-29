@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const SideCart = (props) => {
-  console.log(props.data);
-  return <div>SideCart</div>;
+  const [time, setTime] = useState("");
+  useEffect(() => {
+    const getWatchTime = localStorage.getItem("watchTime");
+    setTime(getWatchTime);
+  }, [props.data]);
+
+  return (
+    <div>
+      <h1>Total WatchTime is: {time}</h1>
+    </div>
+  );
 };
 
 export default SideCart;

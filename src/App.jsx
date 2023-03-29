@@ -13,11 +13,12 @@ function App() {
     if (previousWatchTime) {
       const newTime = previousWatchTime + data;
       localStorage.setItem("watchTime", newTime);
+      setCartData(newTime);
     } else {
       localStorage.setItem("watchTime", data);
+      setCartData(data);
     }
-
-    setCartData(data);
+    // setCartData(previousWatchTime);
   };
   return (
     <>
