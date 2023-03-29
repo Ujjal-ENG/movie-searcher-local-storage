@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SIngleCard from "./SIngleCard";
 
-const Home = () => {
+const Home = (props) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,10 @@ const Home = () => {
 
   return (
     <div className="">
-      {data && data.map((el, i) => <SIngleCard key={i} data={el} />)}
+      {data &&
+        data.map((el, i) => (
+          <SIngleCard key={i} data={el} findTheData={props.findTheData} />
+        ))}
     </div>
   );
 };
