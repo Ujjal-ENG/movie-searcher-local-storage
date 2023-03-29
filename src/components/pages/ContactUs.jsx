@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 
 const ContactUs = () => {
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center my-5">
       <Form>
         <h1>Contact With Us</h1>
         <Form.Group className="mb-4  " controlId="formBasicEmail">
@@ -21,18 +21,18 @@ const ContactUs = () => {
           />
           <textarea
             type="email"
-            className="w-100 text-center"
+            className="w-100 text-center rounded"
             placeholder="Type your Text"
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" className="w-100" type="submit">
           Send Email
         </Button>
       </Form>
 
       {/* right side images */}
-      <img src={Login} alt="" />
+      <img src={Login} alt="" className="w-25" />
     </div>
   );
 };
